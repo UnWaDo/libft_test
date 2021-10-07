@@ -22,11 +22,11 @@ $(LIBFT):
 	make -C $(LIBFT_PATH) all
 
 clean:
-	rm $(OBJECTS)
+	rm -f $(OBJECTS)
 	make -C $(LIBFT_PATH) clean
 
 fclean: clean
-	rm $(NAME)
+	rm -f $(NAME)
 	make -C $(LIBFT_PATH) fclean
 
 re: fclean all
