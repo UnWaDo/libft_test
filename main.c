@@ -2,6 +2,7 @@
 #include "libft.h"
 #include <ctype.h>
 #include <string.h>
+#include <fcntl.h>
 
 // void	check_function(void* value, int (*cmp)(void*))
 // {
@@ -49,39 +50,48 @@ int	main(void)
 	// 	i++;
 	// }
 
-	// char	string[50] = {"Some input string"};
-	char	*expected;
-	char	*result;
+	// // char	string[50] = {"Some input string"};
+	// char	*expected;
+	// char	*result;
 
-	expected = malloc(50);
-	result = malloc(50);
-	ft_memset(expected, 'A', 50);
-	ft_memset(result, 'A', 50);
-	printf("%s\n%s\n", expected, result);
-	// ft_memcpy(expected, string, ft_strlen(string));
-	// ft_memcpy(result, string, ft_strlen(string));
+	// expected = malloc(50);
+	// result = malloc(50);
+	// ft_memset(expected, 'A', 50);
+	// ft_memset(result, 'A', 50);
 	// printf("%s\n%s\n", expected, result);
-	// memmove(expected + 3, expected, 25);
-	// ft_memmove(result + 3, result, 25);
+	// // ft_memcpy(expected, string, ft_strlen(string));
+	// // ft_memcpy(result, string, ft_strlen(string));
+	// // printf("%s\n%s\n", expected, result);
+	// // memmove(expected + 3, expected, 25);
+	// // ft_memmove(result + 3, result, 25);
+	// // printf("%s\n%s\n", expected, result);
+
+	// char	empty_string[] = {"Some string\0with hidden part"};
+	// expected[25] = 0;
+	// result[25] = 0;
+	// // printf("%lu %lu\n", strlcat(expected, string, 50), ft_strlcat(result, string, 50));
+	// // printf("%s\n%s\n", expected, result);
+	// printf("%lu %lu\n", strlcat(expected, empty_string, 50), ft_strlcat(result, empty_string, 50));
 	// printf("%s\n%s\n", expected, result);
 
-	char	empty_string[] = {"Some string\0with hidden part"};
-	expected[25] = 0;
-	result[25] = 0;
-	// printf("%lu %lu\n", strlcat(expected, string, 50), ft_strlcat(result, string, 50));
-	// printf("%s\n%s\n", expected, result);
-	printf("%lu %lu\n", strlcat(expected, empty_string, 50), ft_strlcat(result, empty_string, 50));
-	printf("%s\n%s\n", expected, result);
+	// free(expected);
+	// free(result);
+	// char *str = "the cake is a lie !\0I'm hidden lol\r\n";
+	// char buff1[0xF00] = "123123123123131231231231231233";
+	// char buff2[0xF00] = "123123123123131231231231231233";
+	// // size_t max = strlen("the cake is a lie !\0I'm hidden lol\r\n") + 4;
+	// printf("%lu\n", strlen(buff2) + strlen(str));
+	// size_t r1 = strlcat(buff1, str, 0);
+	// size_t r2 = ft_strlcat(buff2, str, 0);
+	// printf("%lu %lu\n", r1, r2);
+	// printf("%s\n%s\n", buff1, buff2);
 
-	free(expected);
-	free(result);
-	char *str = "the cake is a lie !\0I'm hidden lol\r\n";
-	char buff1[0xF00] = "123123123123131231231231231233";
-	char buff2[0xF00] = "123123123123131231231231231233";
-	// size_t max = strlen("the cake is a lie !\0I'm hidden lol\r\n") + 4;
-	printf("%lu\n", strlen(buff2) + strlen(str));
-	size_t r1 = strlcat(buff1, str, 0);
-	size_t r2 = ft_strlcat(buff2, str, 0);
-	printf("%lu %lu\n", r1, r2);
-	printf("%s\n%s\n", buff1, buff2);
+	int fd;
+
+	fd = open("test", O_WRONLY | O_CREAT | O_TRUNC);
+	ft_putnbr_fd(INT_MIN, fd);
+	ft_putstr_fd("Some string", fd);
+	close(fd);
+
+	return (0);
 }
